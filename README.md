@@ -1,9 +1,37 @@
-# 🧾 Bash Scripting Sinhala Guide
+# 📟 Bash Scripting Sinhala Guide
 
 ## 🧑‍💻 Introduction to Bash Scripting
 
 * Bash script එකක් කියන්නේ command line වල typed කරන දේවල් automate කරන්න ලියන text file එකක්.
-* මුලින්ම bash script එකට `#!/bin/bash` shebang එක දාන්න.
+* මුලින්ම bash script එකට shebang එකක් දාන්න. එය shell එකට කියනවා script එක run කරන්න ඕනෙ කොහොමද කියලා.
+
+### 🔹 `#!/bin/bash` සහ `#!/bin/sh` වෙනස:
+
+#### `#!/bin/bash`
+
+* Bash shell එක භාවිතා කරනවා.
+* Advanced features support කරනවා: arrays, `(( math ))`, `[[ conditions ]]`, string manipulation වගේ.
+* Ubuntu, Fedora වගේ modern systems වල default shell එක.
+
+#### `#!/bin/sh`
+
+* පරණ systems වලට සහ POSIX compatibility සඳහා.
+* Lightweight, but limited features.
+* `bash` වල තියෙන advanced syntax එකට support නෑ.
+
+#### උදාහරණය:
+
+```bash
+#!/bin/sh
+((count++))   # ❌ Error: unsupported syntax in sh
+```
+
+```bash
+#!/bin/bash
+((count++))   # ✅ Valid in bash
+```
+
+**ඉතින් bash-specific features use කරනවා නම් `#!/bin/bash` use කරන්න. Portable & basic script එකක් නම් `#!/bin/sh` use කරන්න.**
 
 ```bash
 #!/bin/bash
@@ -34,7 +62,7 @@ Arguments කියන්නේ script එක run කරන වෙලාවේ �
 | `$#`     | argument ගණන      | `2`           |
 | `$@`     | සියලු argument    | `hello world` |
 
-### 🧪 Example:
+### 🔪 Example:
 
 ```bash
 #!/bin/bash
@@ -143,10 +171,11 @@ done
 ✅ You learned:
 
 * Bash script basics
+* `#!/bin/bash` vs `#!/bin/sh`
 * Using arguments `$1`, `$2`, `$#`
 * `if` statements
 * `while`, `for`, and C-style loops
 * Number comparison: `-lt`, `-gt`, `-eq`, etc.
 * Delays with `sleep`
 
-🎯 Useful for automation, scheduling, scripting tasks, and learning DevOps fundamentals!
+🌟 Useful for automation, scheduling, scripting tasks, and learning DevOps fundamentals!
